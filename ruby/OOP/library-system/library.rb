@@ -36,7 +36,3 @@ catalog.see_catalog
 
 
 
-# Roadbumps
-# User new Catalog like in JS, isntead of Catalog.new in ruby
-
-# In ruby objects we bracket notation [:count], can't use dot notation like in JS
