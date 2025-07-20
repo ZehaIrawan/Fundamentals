@@ -4,7 +4,7 @@ class Catalog
   end
 
   def see_catalog
-    puts @books_list
+    @books_list
   end
 
   def add_book(user_book)
@@ -28,17 +28,17 @@ class Catalog
   end
 end
 
-catalog = Catalog.new([{title:'Lord of the rings',count: 2}])
+# catalog = Catalog.new([{title:'Lord of the rings',count: 2}])
 
+# catalog.add_book({title:'Game of Thrones', count:1})
+# catalog.add_book({title:'Game of Thrones', count:1})
+# catalog.remove_book({title:'Game of Thrones'})
+# catalog.remove_book({title:'Lord of the rings'})
+# catalog.remove_book({title:'Lord of the srings'})
+# puts "===="
 # catalog.see_catalog
-catalog.add_book({title:'Game of Thrones', count:1})
-catalog.add_book({title:'Game of Thrones', count:1})
-catalog.remove_book({title:'Game of Thrones'})
-catalog.remove_book({title:'Lord of the rings'})
-catalog.remove_book({title:'Lord of the srings'})
-puts "===="
-catalog.see_catalog
 
+# ruby test/test_catalog.rb
 
 
 
