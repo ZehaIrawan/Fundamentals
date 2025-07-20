@@ -7,21 +7,24 @@ class Catalog
     puts @books_list
   end
 
-  def add_book(book_title)
-
-    book_exist = @books_list.find { |u| u[:title] == book_title }
-    if book_exist
-      book_exist[:count] += 1
-      return
+  def add_book(user_book)
+    book = @books_list.find { |u| u[:title] == user_book[:title] }
+    if book
+      book[:count] += 1
+    else
+      @books_list << {title:user_book[:title], count:user_book[:count]}
     end
-
-    @books_list.push({title:book_title, count:1})
   end
 
-  def remove_book(book)
-    # @books_list
-    # find book then remove it if it's only have 1 count
-    # if it's above one decrase the count
+  def remove_book(user_book)
+    book = @books_list.find { |u| u[:title] == user_book[:title] }
+    if book 
+      if book[:count] > 0
+        book[:count] -= 1
+      end 
+    else
+      puts 'Book not found or out of stock'
+    end
   end
 end
 
@@ -30,6 +33,9 @@ catalog = Catalog.new([{title:'Lord of the rings',count: 2}])
 # catalog.see_catalog
 catalog.add_book({title:'Game of Thrones', count:1})
 catalog.add_book({title:'Game of Thrones', count:1})
+catalog.remove_book({title:'Game of Thrones'})
+catalog.remove_book({title:'Lord of the rings'})
+catalog.remove_book({title:'Lord of the srings'})
 puts "===="
 catalog.see_catalog
 
