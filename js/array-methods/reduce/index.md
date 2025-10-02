@@ -4,8 +4,6 @@ Think of it like a snowball rolling through your array, collecting data along th
 
 The order of parameters in reduce() absolutely matters.
 
-Here’s the standard order inside the reducer function:
-
 ```js
 array.reduce((accumulator, currentValue, index, array) => {
   // do something
@@ -47,3 +45,62 @@ An optional initial value.
 }
 ```
 This callback runs once per item in the array (from left to right).
+
+Exactly 👍 — you nailed the pattern.
+
+For **most array functions** in JavaScript (`map`, `forEach`, `filter`, `some`, `every`, etc.), the callback parameters follow this order:
+
+👉 **VIA**: **Value, Index, Array**
+
+---
+
+### Examples
+
+#### `map`
+
+```js
+[10, 20, 30].map((value, index, array) => {
+  console.log(value, index, array);
+  return value * 2;
+});
+```
+
+#### `forEach`
+
+```js
+[10, 20, 30].forEach((value, index, array) => {
+  console.log(value, index, array);
+});
+```
+
+#### `filter`
+
+```js
+[1, 2, 3].filter((value, index, array) => value > 1);
+```
+
+So:
+
+* **V** → Current element value
+* **I** → Current index
+* **A** → The array itself
+
+---
+
+### Special case: `reduce`
+
+For `reduce`, it’s **AVIA**:
+
+* `Accumulator` comes first (because the whole point is carrying the result forward).
+* Then it follows the **VIA** pattern for the rest: `Value, Index, Array`.
+
+---
+
+✅ So your mnemonic is spot on:
+
+* **VIA** for most array methods.
+* **AVIA** for `reduce`.
+
+---
+
+Want me to make you a **quick comparison chart** (one glance table) of all major array methods with their callback parameter order, so you can memorize them once and for all?

@@ -16,3 +16,12 @@ const res = nested.reduce((arr,curr)=> {
   return arr
 },[])
 ```
+
+# Challenge 3: Count Occurrences
+
+```js
+const count = fruits.reduce((acc, fruit) => {
+  acc[fruit] = (acc[fruit] || 0) + 1;
+  return acc;
+}, {});
+```
