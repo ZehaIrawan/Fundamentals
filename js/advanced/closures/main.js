@@ -14,8 +14,6 @@ function createCounter() {
   }
 }
 
-//🧠 Hint: use a variable inside createCounter() that increments each time the inner function runs.
-
 const counter = createCounter()
 console.log(counter()) // 1
 console.log(counter()) // 2
