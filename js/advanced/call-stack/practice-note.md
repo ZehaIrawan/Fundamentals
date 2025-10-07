@@ -157,8 +157,3 @@ Think of it like:
 
 LIFO (Last In, First Out) — exactly like stacking plates 🥞.
 
----
-
-If you want, I can show a **diagram animation** (stack push/pop per step)
-or give you a **mental trick** to remember stack order forever (“inside-out” execution rule).
-Want me to show that next?

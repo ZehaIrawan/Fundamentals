@@ -21,10 +21,22 @@ function third() {
 first()
 
 // Write down the exact order of console logs and explain why each one runs when it does.
-// (Tip: draw boxes for each function call to see the stack push/pop.)
 
-// First start
-// Second start
-// Third
-// Second end
-// First end
+
+
+//🧱 2. Stack Overflow
+
+//Goal: understand recursion limits.
+
+// function recurse(n) {
+//   console.log(n)
+//   return recurse(n + 1)
+// }
+
+// recurse(1)
+
+// 🧠 Challenge:
+// 1. What error appears?
+// 2. Why does it happen?
+// 3. How could you rewrite it to avoid stack overflow but still count infinitely (hint: use setTimeout)?
+
