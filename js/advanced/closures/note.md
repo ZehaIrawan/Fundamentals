@@ -1,4 +1,4 @@
-A closure is a function that has access to the parent scope, after the parent function has closed.
+# A closure is a function that has access to the parent scope, after the parent function has closed.
 
 Closures has historically been used to:
 
@@ -6,6 +6,15 @@ Closures has historically been used to:
 - Preserve state between function calls
 - Simulate block-scoping before let and const existed
 - Implement certain design patterns like currying and memoization
+
+
+## When closure eligible for garbage collected
+| Condition                                         | Closure Status            |
+| ------------------------------------------------- | ------------------------- |
+| Function reference still exists                   | ✅ Alive                   |
+| Captured variables still reachable                | ✅ Alive                   |
+| All references removed (function + captured vars) | ☠️ Dies (eligible for GC) |
+
 
 ⚙️ Why Closures Were Everywhere Before
 

@@ -1,4 +1,4 @@
-The heap is a region in memory where objects, arrays, and functions are stored.
+The heap is a region in memory where data structures (objects, arrays, and functions) are stored.
 
 | Memory Area | Used For                                                              | Size  | Example          |
 | ----------- | --------------------------------------------------------------------- | ----- | ---------------- |
