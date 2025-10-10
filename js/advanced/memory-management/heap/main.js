@@ -46,6 +46,16 @@ const fn = outer();
 
 // Q: Why doesn’t { secret: 42 } get garbage collected?
 
+// ⚡ Challenge 5 — Large Memory Objects
+
+// Simulate memory growth:
+let big = [];
+for (let i = 0; i < 1e6; i++) {
+  big.push({ index: i });
+}
+console.log("Stored a million objects!");
+
+// Q: Why does this affect heap, not stack?
 
 
 

@@ -31,6 +31,16 @@ Quick nuances to lock it in:
 
 # 🌀 Challenge 4 — Closure keeps heap alive
 
-Because it's still being reference inside closure => 
+Because it's still being reference inside closure =>
 
 That object stays alive because the returned inner closes over data. As long as fn (the closure) is reachable, the GC must keep data in the heap.
+
+#  ⚡ Challenge 5 — Large Memory Objects
+
+=> because the code are dealing with array, which is a data structure
+
+“Stack holds references, heap holds actual data. Arrays (and their elements) live in the heap.”
+
+- Arrays in JavaScript are objects, and all objects live in the heap.
+
+- The variable (like big) exists in the stack, storing only a reference (pointer) to that heap object.
