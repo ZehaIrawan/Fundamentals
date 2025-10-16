@@ -30,3 +30,5 @@ When predicting async order in JS:
 1. Synchronous code → runs first.
 2. Microtasks (Promises, queueMicrotask) → next.
 3. Macrotasks (setTimeout, setInterval, I/O) → last.
+
+https://javascript.info/event-loop
