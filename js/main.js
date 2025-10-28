@@ -22,6 +22,8 @@ button.addEventListener('click', () => {
 })
 
 
+button.click()
+
 // **🧠 Task:**
 // 1️⃣ Click the button — what prints for both logs?
 // 2️⃣ Why does one show `"Click Me"` and the other `undefined`?

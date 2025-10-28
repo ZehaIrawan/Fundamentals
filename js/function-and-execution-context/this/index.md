@@ -1,3 +1,11 @@
+this is a special keyword that automatically refers to something different depending on how a function is called, not where it’s written.
+
+Think of this as:
+
+“Who called me?”
+
+It points to the object that owns the function at the time it’s executed.
+
 2. But arrow functions changed the landscape
 
 Arrow functions don’t have their own this,
