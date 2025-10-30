@@ -1,29 +1,16 @@
-// import { JSDOM } from 'jsdom'
-const {JSDOM} = require('jsdom')
+class Counter {
+  count = 0
 
-const dom = new JSDOM(`<!DOCTYPE html><body></body>`)
-const document = dom.window.document
+  increase = () => {
+    this.count++
+    console.log(this.count)
+  }
+}
 
-// ## 🖱 **Challenge 3 – Event Handler in Browser**
+// instance of counter
+const counter = new Counter()
 
-// ### **Goal:** Learn what `this` points to in DOM events.
+// variable hold a function of increase
+const inc = counter.increase
+inc() // ❓ what happens here?
 
-
-const button = document.createElement('button')
-button.textContent = "Click Me"
-document.body.appendChild(button)
-
-button.addEventListener('click', function() {
-  console.log("Clicked:", this.textContent)
-})
-
-button.addEventListener('click', () => {
-  console.log("Arrow Clicked:", this.textContent)
-})
-
-
-// **🧠 Task:**
-// 1️⃣ Click the button — what prints for both logs?
-// 2️⃣ Why does one show `"Click Me"` and the other `undefined`?
-
-// 💡 *Hint:* In event listeners, `function()` binds `this` to the element, but arrow functions don’t.
