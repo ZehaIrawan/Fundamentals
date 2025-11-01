@@ -51,8 +51,6 @@ person.arrow()   // ?
 2️⃣ Explain why they differ.
 3️⃣ Fix the arrow one so it correctly prints `"Arrow: Dinda"`.
 
-💡 *Hint:* Arrow functions use **lexical `this`** (from where they’re defined).
-
 ---
 
 ## 🖱 **Challenge 3 – Event Handler in Browser**
@@ -76,8 +74,6 @@ button.addEventListener('click', () => {
 **🧠 Task:**
 1️⃣ Click the button — what prints for both logs?
 2️⃣ Why does one show `"Click Me"` and the other `undefined`?
-
-💡 *Hint:* In event listeners, `function()` binds `this` to the element, but arrow functions don’t.
 
 ---
 
@@ -104,7 +100,6 @@ inc() // ❓ what happens here?
 1️⃣ Predict the output.
 2️⃣ Fix it so `inc()` works correctly even when detached.
 
-💡 *Hint:* Use an arrow function or `.bind(this)` in the constructor.
 
 ---
 
@@ -130,7 +125,6 @@ car.start()
 1️⃣ Predict the two console logs.
 2️⃣ Fix it so both logs print `"Tesla"`.
 
-💡 *Hint:* Arrow function inside `setTimeout` inherits the outer `this`.
 
 ---
 

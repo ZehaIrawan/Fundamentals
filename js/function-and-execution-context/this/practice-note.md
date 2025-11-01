@@ -139,5 +139,47 @@ To make it work you can
 
 // Here, the surrounding scope is the class instance itself, because this code runs inside the constructor context.
 
-// Normal function → this determined at call time
-// Arrow function → this determined at creation time
+## Normal function → this determined at call time 
+- Meaning: whoever is on the left side of the dot becomes this.
+- normal functions don’t automatically inherit this.
+- And plain functions have this = undefined (in strict mode) or this = window (in browser non-strict mode).
+
+## Arrow function → this determined at creation time
+   Instead, it captures this from where it was originally written (lexical binding).
+
+
+Arrow functions do not have their own this.
+Instead, they capture this from where they are defined (lexical this).
+
+increase is an arrow function, so this is lexically bound to the instance of the class at creation time. Even when we assign increase to another variable and call it, this still refers to the counter instance. Therefore calling inc() increments counter.count and prints 1.
+
+Because increase is defined using an arrow function, it captures this lexically from the instance. So even when assigned to inc, it still refers to the original counter object. Calling inc() increments counter.count and logs 1.
+
+## 🧮 **Challenge 5 – setTimeout and Lost Context**
+
+### **Goal:** Learn how `this` behaves in async callbacks.
+
+```js
+const car = {
+  brand: "Tesla",
+  start: function() {
+    console.log("Starting", this.brand)
+    setTimeout(function() {
+      console.log("Inside timeout:", this.brand)
+    }, 1000)
+  }
+}
+
+car.start()
+```
+
+**🧠 Task:**
+1️⃣ Predict the two console logs.
+2️⃣ Fix it so both logs print `"Tesla"`.
+
+💡 *Hint:* Arrow function inside `setTimeout` inherits the outer `this`.
+
+The start method has the correct this because it is called as car.start().
+But the setTimeout callback is a regular function, so its this is not inherited from start().
+Regular functions get this from how they are called, and here it’s called without a context, so this becomes undefined.
+Using an arrow function fixes it because arrow functions capture this from where they are defined.
