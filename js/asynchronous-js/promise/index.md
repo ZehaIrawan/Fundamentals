@@ -154,13 +154,98 @@ These patterns matter in senior interviews.
 
 ---
 
-If you want, I can now show:
+There is **only one type of Promise in JavaScript** — the built-in `Promise` object.
+Tapi, Promise bisa berada pada **tiga keadaan (states)** dan punya **tiga pola penggunaan** yang berbeda.
+Sering orang salah paham mengira ini "tipe Promise".
 
-✅ When to use `Promise.all`
-✅ When to avoid it
-✅ When `Promise.allSettled` is the better choice
+---
 
-Just say:
+## ✅ **1. Promise States**
 
-> **continue**
+Promise selalu berada pada salah satu dari **tiga state** ini:
+
+| State         | Arti                          | Contoh            |
+| ------------- | ----------------------------- | ----------------- |
+| **pending**   | operasi async masih berjalan  | nunggu fetch data |
+| **fulfilled** | berhasil & menghasilkan value | `resolve(value)`  |
+| **rejected**  | gagal & menghasilkan error    | `reject(error)`   |
+
+```js
+const p = new Promise((resolve, reject) => {
+  resolve("Done") // fulfilled
+  // reject("Error") // rejected
+});
+```
+
+---
+
+## ✅ **2. Cara Menggunakan Promise**
+
+### **a. `.then()` / `.catch()` Chain**
+
+```js
+fetch('/data.json')
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
+```
+
+### **b. `async / await` (cara modern)**
+
+```js
+async function loadData() {
+  try {
+    const res = await fetch('/data.json');
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+```
+
+---
+
+## ✅ **3. Promise Combinators**
+
+Ini sering disebut "tipe", tapi lebih tepatnya **metode bawaan untuk meng-handle banyak Promise sekaligus**:
+
+| Method                        | Kapan dipakai                                | Behavior                    |
+| ----------------------------- | -------------------------------------------- | --------------------------- |
+| **Promise.all([...])**        | Semua harus sukses                           | Kalau 1 gagal → semua gagal |
+| **Promise.allSettled([...])** | Butuh semua result tanpa peduli sukses/gagal | Tidak throw error           |
+| **Promise.race([...])**       | Ambil yang paling cepat selesai              | Tidak peduli sukses/gagal   |
+| **Promise.any([...])**        | Ambil promise pertama yang **sukses**        | Jika semua gagal → error    |
+
+### Contoh:
+
+```js
+const p1 = fetch('/1');
+const p2 = fetch('/2');
+const p3 = fetch('/3');
+
+Promise.all([p1, p2, p3])
+  .then(results => console.log("Semua selesai"))
+  .catch(err => console.log("Ada yang gagal:", err));
+```
+
+---
+
+## 🧠 Ringkasan Cepat
+
+* **Promise cuma satu jenis** → object async yang punya *state*.
+* Yang beda adalah **state dan cara kita meng-handle-nya.**
+* Untuk banyak async sekaligus, gunakan **combinators** seperti `Promise.all`, `allSettled`, `race`, `any`.
+
+---
+
+Kalau mau, aku bisa lanjutkan:
+
+✅ bikin **diagram visual**
+✅ bikin **soal latihan challenge**
+✅ jelasin **Promise vs Callback**
+✅ jelasin **real-world use case (fetch API, DB query, queue processing, dsb.)**
+
+Mau yang mana lanjut dulu? 😊
+
 
