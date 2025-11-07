@@ -66,3 +66,53 @@ for (const [key, value] of Object.entries(profile)) {
   console.log(key, value);
 }
 ```
+
+# 3. Print numbers from 1 to 50, but stop the loop when the number reaches 23.
+
+My answer
+```js
+for(let i = 0;i <= 50;i++){
+  console.log(i)
+  if(i === 26) break
+}
+```
+
+Mistake
+- start from 0 instead of 1
+- stop at 26 instead of 23
+
+# 4. Keep generating a random number (1–10) until the number equals 5. Print each generated number.
+
+
+let randomNumber;
+
+function generateNumber(max,min){
+  randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// how to loop number
+while (randomNumber !== 5) {
+  generateNumber(10,1)
+  console.log(randomNumber)
+}
+
+// Math.round is bad idea
+// need to use math floor and math random
+
+// Math.random()         → random decimal (0 to <1)
+// * (max - min + 1)     → stretch to correct size
+// Math.floor(...)       → remove decimals (get whole numbers)
+// + min                 → shift to start at min
+
+
+Your logic is almost correct, but there is one bug:
+
+randomNumber is never assigned before the while check,
+so the loop condition checks:
+
+while (undefined !== 5)  // true
+
+
+Meaning it runs — but the first random number isn't generated until inside the loop.
+
+To fix: generate once before entering the loop.
