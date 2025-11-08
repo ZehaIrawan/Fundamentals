@@ -83,7 +83,7 @@ Mistake
 
 # 4. Keep generating a random number (1–10) until the number equals 5. Print each generated number.
 
-
+```js
 let randomNumber;
 
 function generateNumber(max,min){
@@ -95,7 +95,7 @@ while (randomNumber !== 5) {
   generateNumber(10,1)
   console.log(randomNumber)
 }
-
+```
 // Math.round is bad idea
 // need to use math floor and math random
 
@@ -116,3 +116,99 @@ while (undefined !== 5)  // true
 Meaning it runs — but the first random number isn't generated until inside the loop.
 
 To fix: generate once before entering the loop.
+
+# 5. Ask the user for input once, and continue asking again **only** if the input is empty.
+
+
+## My answer
+
+Thinking process
+1. whats node js method to input to terminal
+2. how to avoid readline input always reexecuted
+
+```js
+let userInput = null
+
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+
+
+readline.question('Who are you?', name => {
+  while(!name) {
+  }
+  console.log(`Hey there ${name}!`);
+  readline.close();
+});
+```
+
+You’re close — main issue is:
+- while loops don’t work with async I/O (like readline.question)
+- The callback version of readline.question cannot "wait" before looping.
+So you need to wrap readline.question inside a Promise and use await instead of while.
+
+## Solution
+
+### IIFE (Immediately Invoked Function Expression)
+
+```js
+const readline = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function ask(question) {
+  return new Promise(resolve => {
+    readline.question(question, answer => resolve(answer));
+  });
+}
+
+(async function() {
+  let name = "";
+
+  while (!name) {
+    name = await ask("Who are you? ");
+    if (!name) {
+      console.log("You must enter something. Try again.");
+    }
+  }
+
+  console.log(`Hey there ${name}!`);
+  readline.close();
+})();
+```
+
+### 1 Use readline.promises (Built-in, cleanest in modern Node)
+
+If you're on Node 17+, this is the best approach.
+No IIFE needed. No custom ask() function.
+
+# Module
+[MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/zehairawan/Project/Fundamentals/js/control-flow/loop/main.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/zehairawan/Project/Fundamentals/js/package.json.
+
+```js
+import readline from 'readline/promises'
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+let name = "";
+
+while (!name) {
+  name = await rl.question("Who are you? ");
+  if (!name) console.log("Please enter something.");
+}
+
+console.log(`Hey there ${name}!`);
+rl.close();
+
+```
+
+# ESM
+ReferenceError: require is not defined in ES module scope, you can use import instead

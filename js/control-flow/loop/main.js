@@ -1,22 +1,16 @@
-// 4. Keep generating a random number (1–10) until the number equals 5. Print each generated number.
+const readline = require('readline/promises')
 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
-let randomNumber;
+let name = "";
 
-function generateNumber(max,min){
-  randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+while (!name) {
+  name = await rl.question("Who are you? ");
+  if (!name) console.log("Please enter something.");
 }
 
-// how to loop number
-while (randomNumber !== 5) {
-  generateNumber(10,1)
-  console.log(randomNumber)
-}
-
-// Math.round is bad idea
-// need to use math floor and math random
-
-// Math.random()         → random decimal (0 to <1)
-// * (max - min + 1)     → stretch to correct size
-// Math.floor(...)       → remove decimals (get whole numbers)
-// + min                 → shift to start at min
+console.log(`Hey there ${name}!`);
+rl.close();
