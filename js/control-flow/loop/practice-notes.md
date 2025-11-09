@@ -212,3 +212,67 @@ rl.close();
 
 # ESM
 ReferenceError: require is not defined in ES module scope, you can use import instead
+
+
+# 6. Create a new array that contains each number from the original array multiplied by 3:
+
+
+const nums = [1, 2, 3, 4];
+
+
+answer
+```js
+const doubled = nums.map(num => num * 3)
+console.log(doubled,'doubled')
+```
+
+- need to pay close attention to the number value, i was multipying it by 2 instead of 3
+
+# 7. Create a new array that contains only the strings:
+const mixed = [10, "JS", true, "Node", null, "React"];
+
+const onlyString = mixed.filter(item => typeof(item) === 'string' )
+
+console.log(onlyString)
+
+
+# 8. Calculate the total value of all items:
+
+
+const prices = [200, 150, 350, 100];
+
+
+const total = prices.reduce((item,acc) => acc + item,0)
+
+console.log(total)
+
+Almost right — but your reduce parameters are flipped.
+
+
+- Note
+reduce callback order is:
+(accumulator, currentValue) => {}
+
+# 9. Add `+10` to each element directly (modify in place):
+
+let scores = [40, 50, 60];
+
+scores.forEach((item, index) => {
+  scores[index] = item + 10;
+});
+
+console.log(scores,'scores')
+
+- Note
+Not careful enough and wrongly put item[index] instead of scores[index
+
+# 10. For a list of HTML elements, attach a click event to each:
+
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((item,index) => {
+  item.addEventListener('click', () => console.log(`clicked ${index}`))
+})]
+
+- note
+I put clicked inside ${} so it's being treated as variable when it should be just string

@@ -53,12 +53,5 @@ let scores = [40, 50, 60];
 const buttons = document.querySelectorAll("button");
 ```
 
----
 
-If you want, I can now:
 
-**A. Show solutions**
-**B. Turn these into mini interview questions**
-**C. Turn into flashcards for recall practice**
-
-Reply with **A**, **B**, or **C**.

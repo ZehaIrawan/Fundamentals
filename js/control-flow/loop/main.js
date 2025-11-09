@@ -1,16 +1,8 @@
-const readline = require('readline/promises')
+// 10. For a list of HTML elements, attach a click event to each:
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
-let name = "";
+const buttons = document.querySelectorAll("button");
 
-while (!name) {
-  name = await rl.question("Who are you? ");
-  if (!name) console.log("Please enter something.");
-}
-
-console.log(`Hey there ${name}!`);
-rl.close();
+buttons.forEach((item,index) => {
+  item.addEventListener('click', () => console.log(`clicked ${index}`))
+})
