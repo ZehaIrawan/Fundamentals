@@ -142,3 +142,33 @@ const groupedOrders = orders.reduce((acc, order) => {
 - accumulator can be object or array
 
 This uses Nullish Assignment (??=) → sets default only if value is null or undefined.
+
+# 3 Count Word Frequency**
+const text = "apple banana apple orange banana apple";
+
+const textArray = text.split(' ')
+
+let wordFrequency = textArray.reduce((acc,word) => {
+  if(acc[word]) {
+    acc[word] += 1
+  } else{
+    acc[word] = 1
+  }
+ return acc
+},{})
+
+console.log(wordFrequency)
+
+// { apple: 3, banana: 2, orange: 1 }
+
+//   if(acc[word]) {
+// TypeError: Cannot read properties of undefined (reading 'banana')
+
+// forgot to return accumulator
+
+// OR
+acc[word] = (acc[word] || 0) + 1;
+
+
+// nullish coalescing
+acc[word] = (acc[word] ?? 0) + 1;
