@@ -172,3 +172,29 @@ acc[word] = (acc[word] || 0) + 1;
 
 // nullish coalescing
 acc[word] = (acc[word] ?? 0) + 1;
+
+# **4 Create a Counter with Private State**
+
+// Write a `createCounter()` so:
+// (without using class)
+
+function createCounter(){
+  let count = 0
+  return function increase(){
+    count++
+    console.log(count)
+  }
+}
+
+const counter = createCounter();
+counter(); // 1
+counter(); // 2
+counter(); // 3
+
+// closure
+// by returning value?
+
+
+// # A closure is a function that has access to the parent scope, after the parent function has closed.
+
+https://www.greatfrontend.com/questions/quiz/what-is-a-closure-and-how-why-would-you-use-one
