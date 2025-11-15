@@ -198,3 +198,33 @@ counter(); // 3
 // # A closure is a function that has access to the parent scope, after the parent function has closed.
 
 https://www.greatfrontend.com/questions/quiz/what-is-a-closure-and-how-why-would-you-use-one
+
+https://www.greatfrontend.com/questions/javascript/function-call?practice=practice&tab=coding
+
+# 5Fix This**
+
+// What is wrong and how do you fix it?
+
+
+const counters = [];
+
+for (let i = 0; i < 3; i++) {
+  counters.push(function() {
+    console.log(i);
+  });
+}
+
+counters[0](); // ?
+counters[1](); // ?
+counters[2](); // ?
+
+// My answer
+// var has global scope, so it's creating new counter instance each time
+// fix it with let
+// all 3
+
+
+// correct
+// The issue is NOT that "var has global scope" — the real problem is:
+
+// ❗ When using var, all functions capture the same variable i, not the value of i at each iteration.
