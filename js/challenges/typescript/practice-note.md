@@ -69,3 +69,9 @@ console.log(product,'product')
 // as number is NOT a conversion.
 
 // It only tells TypeScript to trust you — it does NOT change the runtime value.
+
+🧠 Simple Rule to Remember
+
+Type assertion (as) ≠ Type conversion.
+Type assertions lie to TypeScript,
+type conversion changes the actual value.
