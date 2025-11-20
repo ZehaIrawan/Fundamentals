@@ -1,27 +1,34 @@
-type ApiProduct = {
-  id: string;
-  price: number | string;  // API is inconsistent
-};
+// npx ts-node src/index.ts
 
-function normalizeProduct(p: ApiProduct) {
-  // FIX: always return price: number
-  return {
-    id: p.id,
-    price: Number(p.price)
-  };
+// # ✅ **2. Narrowing Unknown Data (Zod-like behavior)**
+
+// ### **Real-world:**
+
+// You receive user input from a form or JSON, but the type is `unknown` until validated.
+
+// ### **Challenge:**
+
+// Implement a simple narrowing check:
+
+
+function isUser(obj: unknown): obj is { name: string; age: number } {
+  if(typeof obj === 'object') {
+    if(typeof obj.name)
+  }
+  return false
 }
 
-const product = normalizeProduct({ id: "1", price: "12000" });
-// product.price should be a number (12000)
+function loadUser(input: unknown) {
+  if (!isUser(input)) {
+    throw new Error("Invalid user");
+  }
 
-console.log(product,'product')
+  // Should autocomplete: input.name, input.age
+  console.log(input.name.toUpperCase());
+}
 
+loadUser({'egg':1})
 
-// my answer
-//     price: p.price as number
-// should be
-//     price: Number(p.price)
+// Correctly narrow type using runtime checks + TypeScript type guard.
 
-// as number is NOT a conversion.
-
-// It only tells TypeScript to trust you — it does NOT change the runtime value.
+// Narrowing = TypeScript automatically understanding a more specific type after a condition.

@@ -75,3 +75,17 @@ console.log(product,'product')
 Type assertion (as) ≠ Type conversion.
 Type assertions lie to TypeScript,
 type conversion changes the actual value.
+
+==
+function isUser(obj: unknown): obj is User {
+  if (typeof obj !== "object" || obj === null) return false;
+
+  if (!("name" in obj) || !("age" in obj)) return false;
+
+  const candidate = obj as { name: unknown; age: unknown };
+
+  return (
+    typeof candidate.name === "string" &&
+    typeof candidate.age === "number"
+  );
+}
