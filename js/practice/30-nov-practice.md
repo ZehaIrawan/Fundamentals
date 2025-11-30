@@ -1,3 +1,5 @@
+```js
+
 setTimeout(()=> console.log('after 1 sec'),1000)
 
 // i want to see progress
@@ -8,5 +10,5 @@ const promise = new Promise(
     setTimeout(()=> reject("failed"),1000)
   }
 )
-
 // resolve & eject are callbacks provided by js
+```
