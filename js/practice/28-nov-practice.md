@@ -303,3 +303,4 @@ If you’re down, I can:
 
 If you want to start with just one, I’d say:
 👉 **Let’s fix hoisting + TDZ first**, since it’s super foundational.
+
