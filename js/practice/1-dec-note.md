@@ -63,3 +63,6 @@ JavaScript runs much faster than pure interpretation.
 
 Machine code is executed.
 Errors here = TypeError, ReferenceError, etc.a
+
+Do
+- https://javascript.info/promise-basics#tasks

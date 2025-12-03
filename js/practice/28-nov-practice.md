@@ -1,7 +1,3 @@
-Nice, thanks for sending your answers. Let’s go through them quickly and then I’ll tell you **exactly which concepts to focus on next.**
-
----
-
 ## 🔍 Your Answers Review
 
 ### 1. Hoisting & TDZ
@@ -98,6 +94,11 @@ newUser = { ...user }
 newUser.age = 30
 ```
 
+{ ...user, age: 30 }
+The spread expands into:
+{ name: "Zeha", age: 20, age: 30 }
+And JS resolves duplicate keys by using the last occurrence, so age: 30 wins.
+
 ✅ Both valid and idiomatic.
 
 * First version is more concise and common in React/modern JS.
@@ -123,6 +124,22 @@ A destructured version would be:
 ```js
 const { info: { title, price } } = product
 ```
+
+### Question
+with this, info, title and price is becoming new variables, which they get the value from the format of the {}?
+
+What this means:
+- Look inside product
+- Find the key info
+- Inside info, extract the keys title and price
+- Create new variables named title and price
+- info: means Do NOT create a variable named info, because you're destructuring through it, not pulling it out.
+
+Or destructure step-by-step (clearer):
+
+const { info } = product;
+const { title, price } = info;
+
 
 👉 You **understand the data shape**, but could level up with **destructuring syntax**.
 
