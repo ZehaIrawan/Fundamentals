@@ -23,7 +23,7 @@ class RateLimiter {
     this.maxRequests = maxRequests;
     this.perMs = perMs;
   }
-  
+
   run(cb){
     // if still inside the limit run
     // if need add to queue
@@ -33,6 +33,9 @@ class RateLimiter {
 const limiter = new RateLimiter(2, 1000) // max 2 calls per second
 limiter.run(() => console.log("task"))
 
+// Missing concetps
+// - private fields
+// Store limits in constructor, This means every instance has its own rules (just like axios rate limiters or Stripe client limiters).
 
-// why use this inside constructor
+// setInterval(()
 
