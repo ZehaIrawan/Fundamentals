@@ -30,3 +30,18 @@ How real rate limiters actually work
 1. Token Bucket (most common)
 
 I’ll implement this with setInterval for clarity, but in production I’d avoid timers and calculate allowance based on elapsed time
+
+
+===
+# Static
+- The static keyword defines a static method or field for a class
+
+Rule of thumb
+
+“Does this need instance data?”
+Yes → regular method
+No → static method
+
+Instance data is data stored on an object instance, accessed via this, and unique per instance of a class.
+
+- The extends keyword is used in class declarations or class expressions to create a class that is a child of another class.

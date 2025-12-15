@@ -1,41 +1,48 @@
-// Create a `RateLimiter` class that limits how often a function can be called.
+// ```js
+// class Model {
+//   static table = ""
+//   static find(id) {}
+//   save() {}
+// }
+// ```
 
-// )
+// Implement a subclass:
 
+// ```js
+// class User extends Model {
+//   static table = "users"
+// }
+
+// const user = await User.find(1)
+// user.name = "New name"
+// await user.save()
+// ```
 
 // Requirements:
 
-// 1. Accept:
+// 1. `Model.find(id)` returns a new instance populated with fake/mock data.
+// 2. `save()` prints the JSON that “would” be saved.
+// 3. Must demonstrate:
+//    * static methods
+//    * subclass inheritance
+//    * prototype instance methods
 
-//    * `maxRequests`
-//    * `perMs` (time window)
-// 2. Queue tasks if limit exceeded.
-// 3. Run tasks automatically when allowed.
-// 4. Must use **private fields** + **prototype methods**.
-
-
-// https://chatgpt.com/c/69349de0-7fe0-8324-9de7-a655f2600c81
-// https://web.dev/learn/javascript/classes/class-fields
-
-
-class RateLimiter {
-  constructor(maxRequests, perMs){
-    this.maxRequests = maxRequests;
-    this.perMs = perMs;
+class Model {
+  static find(id) {
+    return {
+      userId: id,
+      id: 1,
+      title: "delectus aut autem",
+      completed: false,
+    };
   }
 
-  run(cb){
-    // if still inside the limit run
-    // if need add to queue
-    cb()
-  }
+  save() {}
 }
-const limiter = new RateLimiter(2, 1000) // max 2 calls per second
-limiter.run(() => console.log("task"))
 
-// Missing concetps
-// - private fields
-// Store limits in constructor, This means every instance has its own rules (just like axios rate limiters or Stripe client limiters).
+class User extends Model {}
 
-// setInterval(()
-
+const user = User.find(1);
+console.log(user,'user')
+// user.name = "New name"
+// await user.save()
